@@ -1,0 +1,9 @@
+<% @products.each do |p| %>
+    <%= p.name %>
+    <%= p.description %>
+    <%= p.price %>    
+    <%= link_to 'update', edit_product_path(p)%>
+    <br>
+<% end %>
+<%= link_to 'New product', new_product_path %>
+

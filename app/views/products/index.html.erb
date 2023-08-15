@@ -1,0 +1,27 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">description</th>
+      <th scope="col">price</th>
+      <th scope="col">image</th>
+    </tr>
+  </thead>
+  <% @products.each do |p| %>
+    <tbody class="table-group-divider">
+      <tr>
+        <th scope="row"><%= p.id %></th>
+        <td><%= p.name %></td>
+        <td><%= p.description %></td>
+        <td><%= p.price %></td>
+        <td><%= p.image_url %></td>
+        <td>
+          <div class="btn-group btn-group-sm">
+          <%= link_to 'edit', edit_product_path(p), class: 'btn btn-outline-success' %>
+          <%= link_to 'Destroy', product_path(p), class: 'btn btn-danger', data: { turbo_method: "delete" }%>
+          </div>
+        </td>
+      </tr>
+    
+  <% end %>
