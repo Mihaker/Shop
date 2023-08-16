@@ -6,6 +6,7 @@
       <th scope="col">description</th>
       <th scope="col">price</th>
       <th scope="col">image</th>
+      <th scope="col">category</th>
     </tr>
   </thead>
   <% @products.each do |p| %>
@@ -16,6 +17,7 @@
         <td><%= p.description %></td>
         <td><%= p.price %></td>
         <td><%= p.image_url %></td>
+        <td><%= p.category.name %></td>
         <td>
           <div class="btn-group btn-group-sm">
           <%= link_to 'edit', edit_product_path(p), class: 'btn btn-outline-success' %>
@@ -23,5 +25,7 @@
           </div>
         </td>
       </tr>
-    
   <% end %>
+  
+  <%= link_to 'Add Category', new_category_path %> |
+  <%= link_to ' Add Product', new_product_path %>

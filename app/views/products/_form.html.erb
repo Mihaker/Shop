@@ -1,5 +1,5 @@
 
-<%= form_with model: @product do |form| %>
+<%= form_with model: @product, data: {turbo: false }  do |form| %>
   <div>
     <%= form.label :name%><br>
     <%= form.text_field :name%>
@@ -19,6 +19,8 @@
     <%= form.label :image_tag%><br>
     <%= form.text_field :image_tag%>
   </div>
+    <%= form.label :get_category %>
+    <%= form.collection_select :category_id, Category.all, :id, :name %>
   <div>
     <%= form.submit %>
   </div>
