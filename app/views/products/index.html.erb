@@ -2,9 +2,9 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Name</th>
+      <th scope="col"><%= sort_link(@q, :name, 'Name')%></th>
       <th scope="col">description</th>
-      <th scope="col">price</th>
+      <th scope="col"><%= sort_link(@q, :price, 'Price')%></th>
       <th scope="col">image</th>
       <th scope="col">category</th>
     </tr>
@@ -15,7 +15,7 @@
         <th scope="row"><%= p.id %></th>
         <td><%= p.name %></td>
         <td><%= p.description %></td>
-        <td><%= p.price %></td>
+        <td><%= number_to_currency(p.price, precision: 2) %></td>
         <td><%= p.image_url %></td>
         <td><%= p.category.name %></td>
         <td>
@@ -26,6 +26,15 @@
         </td>
       </tr>
   <% end %>
-  
+
+<%= search_form_for @q, url: products_path do |f| %>
+
+  <%= f.label :name_cont %>
+  <%= f.search_field :price_or_name_cont %>
+
+  <%= f.submit %>
+  <%= link_to "Clear", request.path, class: "btn btn-default" %>
+<% end %>
+
   <%= link_to 'Add Category', new_category_path %> |
   <%= link_to ' Add Product', new_product_path %>
