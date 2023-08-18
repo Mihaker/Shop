@@ -1,0 +1,12 @@
+<h1>All products in this category  </h1>
+<h3 class="text-decoration-underline"><%= @category.name %></h3> 
+ 
+  <% @category.products.each do |item| %>
+    <br>
+       <%= item.name %>
+      <br>
+       <p>Description: <%= item.description %></p>
+      <br>
+       <p>price: <%= number_to_currency(item.price, precision: 2) %><p>
+    <hr>
+  <% end %>

@@ -6,7 +6,7 @@
       <th scope="col">description</th>
       <th scope="col"><%= sort_link(@q, :price, 'Price')%></th>
       <th scope="col">image</th>
-      <th scope="col">category</th>
+      <th scope="col"><%= link_to 'category', categories_path, class: 'text-dark' %></th>
     </tr>
   </thead>
   <% @products.each do |p| %>
