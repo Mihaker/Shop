@@ -1,0 +1,18 @@
+<div class="container-lg">
+      <div class="card text-center">
+        <div class="card-header fs-2">
+          <%= @post.name %>
+        </div>
+        <div class="card shadow-sm">
+            <img src='<%= @post.image %>'/>
+            <div class="card-body">
+              <h5 class="card-title"><%= @post.description%></h5>
+            <p class="card-text"><%= @post.name %></p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                </div>
+                  <small class="text-body-secondary"><%= @post.price %></small>
+              </div>
+            </div>
+        </div>
+    </div>

@@ -9,9 +9,9 @@
   <div class="row row-cols-4">
     <% @products.each do |item| %>
     
-    <div class="col">
+    <div class="col pt-2">
       <div class="card">
-        <img src='https://dummyimage.com/640x360/fff/aaa' class="card-img-top" >
+        <img src='<%= item.image %>' class="card-img-top" >
           <div class="card-body">
             <h5 class="card-title"><%= item.name %></h5>
             <p class="card-text"><%= item.description %></p>

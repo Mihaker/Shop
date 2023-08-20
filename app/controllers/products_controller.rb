@@ -32,7 +32,7 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])  
     if @product.update(product_params)
-      redirect_to root_path
+      redirect_to products_path
     else
       render :new  
     end
@@ -48,6 +48,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :price, :image_url, :category_id)
+    params.require(:product).permit(:name, :description, :price, :image, :category_id)
   end
 end
