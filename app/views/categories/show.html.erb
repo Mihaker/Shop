@@ -1,12 +1,23 @@
-<h1>All products in this category  </h1>
-<h3 class="text-decoration-underline"><%= @category.name %></h3> 
- 
-  <% @category.products.each do |item| %>
-    <br>
-       <%= item.name %>
-      <br>
-       <p>Description: <%= item.description %></p>
-      <br>
-       <p>price: <%= number_to_currency(item.price, precision: 2) %><p>
-    <hr>
-  <% end %>
+<div class="container">
+  <h1>All products in this category  </h1>
+  <h3 class="text-decoration-underline"><%= @category.name %></h3> 
+    <div class="row row-cols-4">
+        <% @category.products.each do |item| %>
+        <div class="col pt-2">
+          <div class="card shadow ">
+          <a href="<%= product_path(item) %>">
+            <img src='<%= item.image %>' class="card-img-top" >
+            </a>
+              <div class="card-body">
+                <h5 class="card-title"><%= item.name %></h5>
+                <hr>
+                <p class="card-text"><%= item.description %></p>
+              </div>
+              <div class="card-footer">
+                <small class="text-body-secondary"><%= number_to_currency(item.price, precision: 2, unit: 'UAH ') %></small>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+</div>

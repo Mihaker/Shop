@@ -5,7 +5,7 @@
       <th scope="col"><%= sort_link(@q, :name, 'Name')%></th>
       <th scope="col">description</th>
       <th scope="col"><%= sort_link(@q, :price, 'Price')%></th>
-      <th scope="col">image</th>
+      <th scope="col">image.present?</th>
       <th scope="col"><%= link_to 'category', categories_path, class: 'text-dark' %></th>
     </tr>
   </thead>
@@ -16,7 +16,7 @@
         <td><%= p.name %></td>
         <td><%= p.description %></td>
         <td><%= number_to_currency(p.price, precision: 2) %></td>
-        <td><%= p.image_url %></td>
+        <td><%= p.image.present?%></td>
         <td><%= p.category.name %></td>
         <td>
           <div class="btn-group btn-group-sm">
@@ -30,7 +30,7 @@
 <%= search_form_for @q, url: products_path do |f| %>
 
   <%= f.label :name_cont %>
-  <%= f.search_field :price_or_name_cont %>
+  <%= f.search_field :name_or_description_cont_any %>
 
   <%= f.submit %>
   <%= link_to "Clear", request.path, class: "btn btn-default" %>

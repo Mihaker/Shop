@@ -1,0 +1,15 @@
+<div class='container-fluid bg-secondary-subtle'>
+  <div class='container-lg'>
+    <div class='row pt-5 '>
+      <div class='col-4'><img src="<%= @product.image %>" class="rounded" alt="...">
+      </div>
+        <div class='col-8'>
+          <h1 class="text-break"><%= @product.name %></h1>
+          <p><%= @product.description %></p>
+          <h5 class="text-wrap"><%= number_to_currency(@product.price, precision: 2, unit: 'UAH ') %></h5>
+        <div>
+    </div>
+  </div>
+</div>
+
+
