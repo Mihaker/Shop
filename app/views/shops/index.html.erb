@@ -1,33 +1,31 @@
-<%= search_form_for @q, url: root_url do |f| %>
 
-    <h3>Search</h3>
-  <%= f.search_field :name_or_price_cont_any %>
-    <h4>Від</h4>
-  <%= f.search_field :price_gteq %>
-  <h4>До</h4>
-  <%= f.search_field :price_lteq %>
-  <%= f.submit %>
-  <%= link_to "Clear", request.path, class: "btn btn-default" %>
-
-<% end %>
-
-<div class="row row-cols-4">
-  <% @products.each do |item| %>
-  
-  <div class="col">
-    <div class="card">
-      <img src='https://dummyimage.com/640x360/fff/aaa' class="card-img-top" >
-        <div class="card-body">
-          <h5 class="card-title"><%= item.name %></h5>
-          <p class="card-text"><%= item.description %></p>
-        </div>
-        <div class="card-footer">
-          <small class="text-body-secondary"><%= number_to_currency(item.price, precision: 2, unit: 'UAH ') %></small>
+<div class='row pt-5'>
+<div class='col-3' style="background-color: :red">
+  <%= render 'shared/search' %>
+  <%= render 'categories/category' %>
+  <%= render 'shared/range_price' %>
+</div>
+<div class='col-9'>
+  <div class="row row-cols-4">
+    <% @products.each do |item| %>
+    
+    <div class="col">
+      <div class="card">
+        <img src='https://dummyimage.com/640x360/fff/aaa' class="card-img-top" >
+          <div class="card-body">
+            <h5 class="card-title"><%= item.name %></h5>
+            <p class="card-text"><%= item.description %></p>
+          </div>
+          <div class="card-footer">
+            <small class="text-body-secondary"><%= number_to_currency(item.price, precision: 2, unit: 'UAH ') %></small>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
+</div>
+
 
 
 

@@ -7,6 +7,7 @@ ruby "3.0.2"
 gem "rails", "~> 7.0.7"
 gem "sprockets-rails"
 gem 'pg'
+gem 'pg_search'
 gem 'bootstrap', '~> 5.0'
 gem "puma", "~> 5.0"
 gem "importmap-rails"
