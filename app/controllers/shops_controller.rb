@@ -8,6 +8,6 @@ class ShopsController < ApplicationController
    
 
    def show 
-      @post = Product.find(params[:id])
+      @product = Product.find(params[:id])
    end
 end

@@ -1,33 +1,33 @@
-
-<div class='row pt-5'>
-<div class='col-3' style="background-color: :red">
-  <%= render 'shared/search' %>
-  <%= render 'categories/category' %>
-  <%= render 'shared/range_price' %>
-</div>
-<div class='col-9'>
-  <div class="row row-cols-4">
-    <% @products.each do |item| %>
-    
-    <div class="col pt-2">
-      <div class="card">
-        <img src='<%= item.image %>' class="card-img-top" >
-          <div class="card-body">
-            <h5 class="card-title"><%= item.name %></h5>
-            <p class="card-text"><%= item.description %></p>
+<div class= 'container-lg'>
+  <div class='row pt-5'>
+    <div class='col-3 shadow'>
+      <%= render 'shared/search' %>
+      <%= render 'categories/category' %>
+      <%= render 'shared/range_price' %>
+    </div>
+    <div class='col-9'>
+      <div class="row row-cols-4">
+        <% @products.each do |item| %>
+        <div class="col pt-2">
+          <div class="card shadow ">
+          <a href="<%= product_path(item) %>">
+            <img src='<%= item.image %>' class="card-img-top" >
+            </a>
+              <div class="card-body">
+                <h5 class="card-title"><%= item.name %></h5>
+                <hr>
+                <p class="card-text"><%= item.description %></p>
+              </div>
+              <div class="card-footer">
+                <small class="text-body-secondary"><%= number_to_currency(item.price, precision: 2, unit: 'UAH ') %></small>
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-body-secondary"><%= number_to_currency(item.price, precision: 2, unit: 'UAH ') %></small>
-          </div>
-        </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
 </div>
-</div>
-
-
-
 
 
 <%= link_to 'New product', new_product_path %>
