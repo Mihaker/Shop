@@ -10,22 +10,24 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="http://localhost:3000/">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
+          <% if user_signed_in?%>
+               <a class="nav-link active"><%= current_user.email %></a>
+                <%= link_to 'Вийти', destroy_user_session_path, class: "nav-link active", 
+                  data: { turbo_method: "delete" } %>
+          <% else %>
            <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Аккаунт</a>
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Аккаунт</a>
             <ul class="dropdown-menu">
               <%= link_to 'Увійти', user_session_path, class: "dropdown-item" %>
               <%= link_to 'Зареєструватись', new_user_registration_path, class: "dropdown-item" %>
             </ul>
+            <% end %>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
             <ul class="dropdown-menu">
               <%= link_to 'New product', new_product_path, class: "dropdown-item" %>
              <%= link_to 'New category', new_category_path, class: "dropdown-item" %>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
           </li>
         </ul>
