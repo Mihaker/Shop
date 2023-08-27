@@ -7,21 +7,27 @@
 
       <div class="collapse navbar-collapse" id="navbarsExample07">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="http://localhost:3000/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+          <% if user_signed_in?%>
+               <a class="nav-link active"><%= current_user.email %></a>
+                <%= link_to 'Вийти', destroy_user_session_path, class: "nav-link active", 
+                  data: { turbo_method: "delete" } %>
+            <li class="nav-item">
+              <%= link_to 'Корзина', cart_path, class: "nav-link active"%>
+            </li>
+          <% else %>
+           <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Аккаунт</a>
+            <ul class="dropdown-menu">
+              <%= link_to 'Увійти', user_session_path, class: "dropdown-item" %>
+              <%= link_to 'Зареєструватись', new_user_registration_path, class: "dropdown-item" %>
+            </ul>
+            <% end %>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Настройки</a>
             <ul class="dropdown-menu">
               <%= link_to 'New product', new_product_path, class: "dropdown-item" %>
              <%= link_to 'New category', new_category_path, class: "dropdown-item" %>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
           </li>
         </ul>

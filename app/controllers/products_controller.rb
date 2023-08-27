@@ -18,6 +18,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
 
     if @product.save
+      flash[:success] = 'Товар додано'
       redirect_to root_path 
     else
       flash[:error] = 'Сталася помилка'
@@ -32,6 +33,7 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])  
     if @product.update(product_params)
+      flash[:success] = 'Товар оновлено'
       redirect_to products_path
     else
       render :new  
@@ -41,7 +43,7 @@ class ProductsController < ApplicationController
   def destroy
     @product = Product.find(params[:id])
     @product.destroy
-    flash[:info] = 'Публікацію виделано'
+    flash[:info] = 'Товар виделано'
     redirect_to products_path
   end
 
