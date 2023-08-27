@@ -1,0 +1,5 @@
+<div class='container pt-2'>
+  <% @cart.line_items.each do |item| %>
+    <li><%= item.quantity %> &times; <%= item.product.name %></li>
+  <% end %>
+</div>

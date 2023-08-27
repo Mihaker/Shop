@@ -1,2 +1,7 @@
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+<div class='container text-center'>
+  <% flash.each do |type, message| %>
+    <div class="<%= flash_class(type) %> shadow-sm p-3 mb-5 roundedd">
+      <%= message %>
+    </div>
+  <% end %>
+</div>
