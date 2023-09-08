@@ -2,11 +2,12 @@
 <p class='fs-4'>Пошук по ціні:</p>
   <%= search_form_for @q, url: root_url do |f| %>
     <div class="row">
-    <div class = 'col-4'> <%= f.search_field :price_gteq, class: "form-control", placeholder: 'min' %></div> 
-    <div class = 'col-4'> <%= f.search_field :price_lteq, class: "form-control", placeholder: 'max' %> </div>
+    <div class = 'col-4'> <%= f.number_field :price_gteq, class: "form-control", placeholder: 'min' %></div> 
+    <div class = 'col-4'> <%= f.number_field :price_lteq, class: "form-control", placeholder: 'max' %> </div>
     <div class = 'col-4'>  <%= f.submit class: 'btn btn-outline-dark' %>  </div>
     </div>
-    
+    <%= f.range_field :price_gteq , in: 1..100 %>
+
   <%= link_to "Clear", request.path, class: "btn btn-default" %>
   <% end %>
 </div>

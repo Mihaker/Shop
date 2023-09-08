@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :orders
+  resources :orders, only: [:new, :create, :index, :show]
   resources :line_items
   resource :cart, only: [:show]
   devise_for :users

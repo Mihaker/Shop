@@ -14,7 +14,9 @@
 <body>
   <%= render 'shared/header' %>
   <%= render 'shared/notification' %>
-  <%= render 'carts/cart' %>
+  <% if @cart.present?%>
+    <%= render 'carts/cart' %>
+  <% end %>
     <div class="container-fluid">
       <%= yield %>
     </div>

@@ -1,0 +1,10 @@
+<div class='container'>
+  <h1>Заказчик: <%= @order.email %></h1>
+  <hr>
+        <h2>Продукти</h2>
+    <% @order.line_items.each do |item| %>
+    <br>
+      <p><%= item.quantity %> &times; <%= item.product.name %>
+      <%= item.product.price %></p>
+    <% end %>
+</div>
