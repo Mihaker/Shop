@@ -3,7 +3,7 @@ class Order < ApplicationRecord
   validates :number, presence: true
   validates :address, presence: true
   
-  PAYMENT_TYPES = [ "Check", "Credit card", "Purchase order" ]
+  CHECKOUT_TYPES = [ "Check", "Credit card", "Purchase order" ]
 
   def add_line_items_from_cart(cart)
     cart.line_items.each do |item|
@@ -11,5 +11,24 @@ class Order < ApplicationRecord
       item.save
       line_items << item
     end
+  end
+
+ 
+  def to_builder
+    Jbuilder.new do |product|
+      product.name
+    end
+  end
+
+  def stripe_line
+    line_items.map do |item|
+    {
+     :name => item.product.name
+    }
+    end
+  end
+
+  def total_price    
+    line_items.to_a.sum { |item| item.total_price }
   end
 end

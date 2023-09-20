@@ -1,11 +1,18 @@
 Rails.application.routes.draw do
-  resources :orders, only: [:new, :create, :index, :show]
-  resources :line_items
+
   resource :cart, only: [:show]
-  devise_for :users
-  root "shops#index"
-  
-  resources :shops, only: [:show, :index]
-  resources :products
   resources :categories
+  resources :products
+
+  resources :orders, only: [:new, :create, :index, :show]
+  resources :shops, only: [:show, :index]
+  resources :line_items
+
+  post 'checkout/create', to: 'checkout#create'
+  get 'checkout/success' 
+  get 'checkout/cancel'
+  
+  devise_for :users
+
+  root "shops#index"
 end

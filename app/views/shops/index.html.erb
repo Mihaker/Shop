@@ -20,7 +20,11 @@
               </div>
               <div class="card-footer">
                 <small class="text-body-secondary"><%= number_to_currency(item.price, precision: 2, unit: 'UAH ') %></small>
-                <%= button_to 'в корзину', line_items_path(product_id: item),class:"btn btn-dark" %>
+                <% if current_user%>
+                  <%= button_to 'в корзину', line_items_path(product_id: item),class:"btn btn-dark" %>
+                <% else%>
+                  <%= link_to 'Купить', user_session_path ,class:"btn btn-dark" %>
+                <%end%>
               </div>
             </div>
           </div>

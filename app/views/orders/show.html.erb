@@ -6,5 +6,11 @@
     <br>
       <p><%= item.quantity %> &times; <%= item.product.name %>
       <%= item.product.price %></p>
+
     <% end %>
+    <hr>
+    <h2>вся сума заказу: <%= @order.total_price %></h2> 
+    <h4> Тип оплати: <%= @order.pay_type %> </h4>
+    <%= button_to 'Subscribe', checkout_create_path, params: [id: @order.id] %>
+    <%= @order.stripe_line %>
 </div>
