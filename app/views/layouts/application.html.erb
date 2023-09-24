@@ -8,16 +8,23 @@
 
     <%= stylesheet_link_tag "application", "daaata-turbo-track": "reload" %>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <%= javascript_importmap_tags %>
+       <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+     <script src="https://js.stripe.com/v3/"></script>
+
+   
   </head>
 
-  <body>
+<body>
   <%= render 'shared/header' %>
-      <%= render 'shared/notification' %>
+  <%= render 'shared/notification' %>
+  <% if @cart.present?%>
+    <%= render 'carts/cart' %>
+  <% end %>
     <div class="container-fluid">
+
       <%= yield %>
     </div>
-  </body>
+</body>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </html>

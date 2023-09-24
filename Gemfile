@@ -11,6 +11,7 @@ gem 'bootstrap', '~> 5.0'
 gem "puma", "~> 5.0"
 gem "importmap-rails"
 gem 'faker'
+gem 'stripe'
 gem "turbo-rails"
 gem 'ransack'
 gem 'sass-rails'

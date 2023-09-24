@@ -1,0 +1,20 @@
+<div class='container'>
+  <h1>Заказчик: <%= @order.email %></h1>
+  <hr>
+  <h2>Продукти</h2>
+    <% @order.line_items.each do |item| %>
+      <br>
+      <p><%= item.quantity %> &times; <%= item.product.name %>
+        <%= item.product.price %></p>
+    <% end %>
+  <hr>
+  <h2>вся сума заказу: <%= @order.total_price %></h2> 
+  <h4> Тип оплати: <%= @order.pay_type %> </h4>
+
+  <%= button_to 'Subscribe', checkout_create_path, params: [id: @order.id], date: {turbo: false}%>
+
+  <br>
+  <%= @order.line_items.collect {|item| item.product.to_builder.attributes!}%>
+  <br>
+
+</div>

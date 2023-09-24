@@ -1,6 +1,7 @@
 <div class='conteiner text-center'>
    <div class='position-absolute top-50 start-50 translate-middle'>
-  <%= form_with model: @product, data: {turbo: false }  do |form| %>
+   <%= render 'shared/errors', object: @product %>
+  <%= form_with model: @product do |form| %>
     <div>
       <%= form.label :name, class:'form-label' %><br>
       <%= form.text_field :name, class:'form-control'%>

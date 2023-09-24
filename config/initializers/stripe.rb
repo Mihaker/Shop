@@ -1,0 +1,1 @@
+ Stripe.api_key = 'sk_test_51Nnzq7Aam4eP6FUFnNqZ0DKyqq7BtJ80iXUzKysSbC4YPaMzTWnx4XWwNlxB8FmcY2JJcK1pv0SU24vIN1Bv57aw00UFitsrZC'

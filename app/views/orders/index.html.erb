@@ -1,0 +1,7 @@
+<div class='container'>
+  <% @orders.each do |item| %>
+    <h5>Від користувача: <%= item.email %></h5>
+    <h5>замовлення номер:  <%= link_to item.id , item %> </h5>
+    <br>
+  <% end %>
+</div>

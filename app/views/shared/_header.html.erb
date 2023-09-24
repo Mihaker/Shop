@@ -8,28 +8,30 @@
       <div class="collapse navbar-collapse" id="navbarsExample07">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <% if user_signed_in?%>
-               <a class="nav-link active"><%= current_user.email %></a>
-                <%= link_to 'Вийти', destroy_user_session_path, class: "nav-link active", 
-                  data: { turbo_method: "delete" } %>
-            <li class="nav-item">
-              <%= link_to 'Корзина', cart_path, class: "nav-link active"%>
-            </li>
+                 <a class="nav-link active"><%= current_user.email %></a>
+                  <%= link_to 'Вийти', destroy_user_session_path, class: "nav-link active", 
+                    data: { turbo_method: "delete" } %>
+                <li class="nav-item">
+                  <button type="button" class="nav-link active" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    Корзина
+                  </button>
+                </li>
           <% else %>
-           <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Аккаунт</a>
-            <ul class="dropdown-menu">
-              <%= link_to 'Увійти', user_session_path, class: "dropdown-item" %>
-              <%= link_to 'Зареєструватись', new_user_registration_path, class: "dropdown-item" %>
-            </ul>
-            <% end %>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Настройки</a>
-            <ul class="dropdown-menu">
-              <%= link_to 'New product', new_product_path, class: "dropdown-item" %>
-             <%= link_to 'New category', new_category_path, class: "dropdown-item" %>
-            </ul>
-          </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Аккаунт</a>
+                <ul class="dropdown-menu">
+                  <%= link_to 'Увійти', user_session_path, class: "dropdown-item" %>
+                  <%= link_to 'Зареєструватись', new_user_registration_path, class: "dropdown-item" %>
+                </ul>
+              <% end %>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Настройки</a>
+              <ul class="dropdown-menu">
+                <%= link_to 'New product', new_product_path, class: "dropdown-item" %>
+              <%= link_to 'New category', new_category_path, class: "dropdown-item" %>
+              </ul>
+            </li>
         </ul>
       </div>
     </div>
