@@ -12,21 +12,8 @@ class Order < ApplicationRecord
       line_items << item
     end
   end
+  
 
- 
-  def to_builder
-    Jbuilder.new do |product|
-      product.name
-    end
-  end
-
-  def stripe_line
-    line_items.map do |item|
-    {
-     :name => item.product.name
-    }
-    end
-  end
 
   def total_price    
     line_items.to_a.sum { |item| item.total_price }

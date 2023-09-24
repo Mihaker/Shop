@@ -1,29 +1,23 @@
 class CheckoutController < ApplicationController
 
   def create 
-    order = Order.find(params[:id])
+    @order = Order.find(params[:id])
     @customer = Stripe::Customer.create(
       email: current_user.email
     )
 
-    session = Stripe::Checkout::Session.create( 
+    session = Stripe::Checkout::Session.create(
       customer: @customer, 
       payment_method_types: ['card'],
-      line_items: [{
-        price_data: {
-          currency: 'USD',
-          unit_amount: 3,
-          product_data: {
-            name: order.stripe_line,
-          },
-        },
-        quantity: 1,
-      }],
+      line_items: @order.line_items.collect {|item| item.product.to_builder.attributes!},
       mode: 'payment',
       success_url:  checkout_success_url,
       cancel_url: checkout_cancel_url
      )
-     redirect_to order 
+     redirect_to session.url, allow_other_host: true
+
+
+  
   end 
 
   def success

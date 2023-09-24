@@ -7,17 +7,19 @@
       <th scope="col"><%= sort_link(@q, :price, 'Price')%></th>
       <th scope="col">image.present?</th>
       <th scope="col"><%= link_to 'category', categories_path, class: 'text-dark' %></th>
+      <th scope="col"> Stripe_ID</th>
     </tr>
   </thead>
   <% @products.each do |p| %>
     <tbody class="table-group-divider">
       <tr>
         <th scope="row"><%= p.id %></th>
-        <td><%= p.name %></td>б 
+        <td><%= p.name %></td>
         <td><%= p.description %></td>
         <td><%= number_to_currency(p.price, precision: 2) %></td>
         <td><%= p.image.present?%></td>
         <td><%= p.category.name %></td>
+         <td><%= p.stripe_price_id%></td>
         <td>
           <div class="btn-group btn-group-sm">
           <%= link_to 'edit', edit_product_path(p), class: 'btn btn-outline-success' %>
