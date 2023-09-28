@@ -4,12 +4,10 @@ class User < ApplicationRecord
           
   has_one :cart
 
+  enum role: {seller: 2, buyer: 1, admin: 0}, _suffix: :role
 
-  after_save :assign_customer_id 
-    def assign_customer_id
-      if self.customer_id.blank? 
-        customer = Stripe::Customer.create(email: current_user.email)
-        self.update(customer_id: customer.id)
-      end
-    end
+  def assign_customer_id
+    customer = Stripe::Customer.create(email: current_user.email)
+    self.customer_id = customer.id
+  end
 end

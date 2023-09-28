@@ -16,7 +16,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-
+    authorize @product
     if @product.save
       flash[:success] = 'Товар додано'
       redirect_to root_path 
@@ -32,6 +32,7 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])  
+    authorize @product
     if @product.update(product_params)
       flash[:success] = 'Товар оновлено'
       redirect_to products_path

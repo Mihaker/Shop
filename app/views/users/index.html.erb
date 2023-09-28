@@ -1,0 +1,27 @@
+<div class='container'>
+  <table class="table">
+    <table class="table">
+      <tr>
+        <th scope="col">id </th>
+        <th scope="col">Email </th>
+        <th scope="col">Role </th>    
+        <th scope="col">Change Role</th>
+      </tr>
+    </thead>  
+      <% @users.each do |user| %>
+      <tbody>
+        <tr>
+          <td scope="row"><%= user.id %></td>
+          <td><%= user.email %></td>
+          <td><%= user.role %></td>
+          <td>
+            <%= form_with model: user, url: user_path(user), local: true, method: :patch do |form| %>
+              <%= form.select :role,  User.roles.keys.to_a %>
+              <%= form.submit 'Change Role' %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
