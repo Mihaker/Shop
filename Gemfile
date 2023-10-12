@@ -8,6 +8,7 @@ gem "sprockets-rails"
 gem 'sidekiq'
 gem 'pg'
 gem 'pg_search'
+gem 'redis'
 gem "pundit"
 gem 'bootstrap', '~> 5.0'
 gem "puma", "~> 5.0"
@@ -29,6 +30,7 @@ end
 
 group :development do
   gem "web-console"
+  gem "letter_opener"
 end
 
 group :test do

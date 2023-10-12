@@ -27,7 +27,7 @@ class OrdersController < ApplicationController
 
     if @order.save
       Cart.destroy(current_user.cart.id)
-     
+      SendOrderMailer.with(order: @order).order_check.deliver_later
       redirect_to root_path
     else
       @cart = current_user.cart

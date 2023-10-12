@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
+  
   resource :cart, only: [:show]
   resources :categories
   resources :products

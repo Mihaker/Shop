@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+
+    <h2> Номер замовлення № <%= @order.id%></h2>
+    <h2> Отримувач: <%= @order.email%></h2>
+      <h3> Ваші покупки </h3>
+        <ul>
+          <% @order.line_items.each do |item| %>
+            <a> Ім*я товару: <%= item.product.name %> </a>
+            <a> Ціна : <%= item.product.price %> </a>
+            <hr>
+          <% end %>
+        </ul>
+      <hr>
+    <h3>До сплати: <%= @order.total_price %></h3>
+    <h3>Прибуває в м.Черкаси вулиця: <%= @order.address%></h3>
+  </body>
+</html>

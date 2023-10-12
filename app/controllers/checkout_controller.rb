@@ -15,9 +15,6 @@ class CheckoutController < ApplicationController
       cancel_url: checkout_cancel_url
      )
      redirect_to session.url, allow_other_host: true
-
-
-  
   end 
 
   def success

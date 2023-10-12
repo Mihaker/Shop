@@ -25,9 +25,9 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-      @category.destroy
-      flash[:error] = 'Видалено категорію'
-      redirect_to root_path
+    @category.destroy
+    flash[:error] = 'Видалено категорію'
+    redirect_to root_path
   end
 
 

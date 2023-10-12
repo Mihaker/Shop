@@ -10,7 +10,8 @@ class UsersController < ApplicationController
   def update 
     @user = User.find(params[:id])
     if @user.update user_params
-      redirect_to users_path, notice: "Роль пользователя обновлена успешно."
+      SendEmailMailer.with(user: @user).welcome_email.deliver_later
+      redirect_to users_path, notice: "Роль пользователя обновлена успешно."     
     else 
       render :edit
     end

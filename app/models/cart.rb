@@ -6,9 +6,9 @@ class Cart < ApplicationRecord
     @carrent_item = line_items.find_by(product_id: product_id)
 
     if @carrent_item
-        @carrent_item.quantity += 1
-      else 
-        @carrent_item = line_items.build(product_id: product_id)
+      @carrent_item.quantity += 1
+    else 
+      @carrent_item = line_items.build(product_id: product_id)
     end
 
     @carrent_item
