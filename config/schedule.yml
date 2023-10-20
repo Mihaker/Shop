@@ -1,0 +1,3 @@
+send_notifications:
+  cron: ' '*/10 * * * *' 
+  class: 'CartReminderJob'

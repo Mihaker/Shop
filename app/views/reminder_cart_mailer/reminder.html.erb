@@ -1,0 +1,13 @@
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+      <h1> На вашій корзині є такий товар будь ласка купіть його <h1>
+        <% @cart.line_items.each do |item| %>
+            <a> Ім*я товару: <%= item.product.name %> </a>
+            <a> Ціна : <%= item.product.price %> </a>
+            <hr>
+        <% end %>
+  </body>
+</html>

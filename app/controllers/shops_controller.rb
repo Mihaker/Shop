@@ -5,6 +5,7 @@ class ShopsController < ApplicationController
       @q = Product.ransack(params[:q])
       @products = @q.result(distinct: true)
       @categories = Category.all
+
    end
    
 
